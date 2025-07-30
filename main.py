@@ -6,10 +6,10 @@ def main():
         argc = len(sys.argv)-1
 
         if argc == 0:
-            read_prompt()
-                
-        # else:
-        #     values = read_file(sys.argv[1])
+            cr = read_prompt()
+        else:
+            cr = read_file(sys.argv[1])
+        
         # simulate
 
     except KeyboardInterrupt:
