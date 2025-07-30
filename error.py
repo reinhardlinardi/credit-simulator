@@ -5,14 +5,26 @@ class Error(Exception):
     def __str__(self):
         return str(self.message)
 
-class InvalidVehicleError(Error):
+class VehicleInvalidError(Error):
     pass
     
-class InvalidConditionError(Error):
+class ConditionInvalidError(Error):
     pass
 
-class InvalidYearError(Error):
+class YearInvalidError(Error):
     pass
 
-class InvalidYearNewVehicleError(Error):
+class NewVehicleYearInvalidError(Error):
+    pass
+
+class TotalInvalidError(Error):
+    pass
+
+class TotalLimitExceededError(Error):
+    pass
+
+class DurationInvalidError(Error):
+    pass
+
+class MaxDurationExceededError(Error):
     pass
