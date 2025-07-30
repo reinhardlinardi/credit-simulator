@@ -1,10 +1,18 @@
 import sys
+from input import read_prompt, read_file
 
-print("hello credit simulator")
+def main():
+    try:
+        argc = len(sys.argv)-1
 
+        if argc == 0:
+            read_prompt()
+                
+        # else:
+        #     values = read_file(sys.argv[1])
+        # simulate
 
-cnt = len(sys.argv)-1
-print("args:", cnt)
+    except KeyboardInterrupt:
+        pass
 
-if cnt == 1:
-    print("argv:", sys.argv[1])
+main()
