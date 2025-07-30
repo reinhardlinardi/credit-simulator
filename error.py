@@ -28,3 +28,9 @@ class DurationInvalidError(Error):
 
 class MaxDurationExceededError(Error):
     pass
+
+class DPInvalidError(Error):
+    pass
+
+class DPLessThanMinimumError(Error):
+    pass

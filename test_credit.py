@@ -77,6 +77,27 @@ class TestSet(unittest.TestCase):
         with self.assertRaises(MaxDurationExceededError):
             cr.set_duration(MAX_DURATION_YEAR+1)
     
+    def test_dp_invalid(self):
+        cr = Credit()
+        cr.set_vehicle(Vehicle.MOTORCYCLE)
+        cr.set_condition(Condition.USED)
+        cr.set_year(2022)
+        cr.set_total(10000000)
+        cr.set_duration(1)
+
+        with self.assertRaises(DPInvalidError):
+            cr.set_dp(cr.total+1)
+
+    def test_dp_less_than_min(self):
+        cr = Credit()
+        cr.set_vehicle(Vehicle.MOTORCYCLE)
+        cr.set_condition(Condition.USED)
+        cr.set_year(2022)
+        cr.set_total(10000001)
+        cr.set_duration(1)
+
+        with self.assertRaises(DPLessThanMinimumError):
+            cr.set_dp(2500000)
 
 if __name__ == '__main__':
     unittest.main()

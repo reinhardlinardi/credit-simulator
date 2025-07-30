@@ -4,6 +4,8 @@ from error import *
 
 MAX_LIMIT = 1000000000
 MAX_DURATION_YEAR = 6
+USED_MIN_DP_PERC = 25
+NEW_MIN_DP_PERC = 35
 
 class Credit:
     def __init__(self):
@@ -53,3 +55,23 @@ class Credit:
         
         self.duration = duration
 
+    def set_dp(self, dp):
+        if dp < 0 or dp > self.total:
+            raise DPInvalidError('dp tidak valid')
+        
+        if self.condition == Condition.USED:
+            min_dp = self.total * USED_MIN_DP_PERC / 100
+        elif self.condition == Condition.NEW:
+            min_dp = self.total * NEW_MIN_DP_PERC / 100
+
+        if dp < min_dp:
+            msg = 'dp kurang dari minimum '
+
+            if self.condition == Condition.USED:
+                msg += '{}% (kondisi bekas)'.format(USED_MIN_DP_PERC)
+            elif self.condition == Condition.NEW:
+                msg += '{}% (kondisi baru)'.format(NEW_MIN_DP_PERC)
+
+            raise DPLessThanMinimumError(msg)
+
+        self.dp = dp
