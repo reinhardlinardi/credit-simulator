@@ -1,6 +1,16 @@
 import sys
 from credit import *
-from constant import *
+
+VEHICLE_MOTORCYCLE = 'MOTOR'
+VEHICLE_CAR = 'MOBIL'
+
+CONDITION_USED = 'BEKAS'
+CONDITION_NEW = 'BARU'
+
+YEAR_FORMAT = 'YYYY'
+
+VEHICLE_MAP = {VEHICLE_MOTORCYCLE: Vehicle.MOTORCYCLE, VEHICLE_CAR: Vehicle.CAR}
+CONDITION_MAP = {CONDITION_USED: Condition.USED, CONDITION_NEW: Condition.NEW}
 
 def read_prompt():
     cr = Credit()

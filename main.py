@@ -1,4 +1,5 @@
 import sys
+# from simulator import CreditSimulator
 from input import read_prompt, read_file
 
 def main():
@@ -6,11 +7,16 @@ def main():
         argc = len(sys.argv)-1
 
         if argc == 0:
-            cr = read_prompt()
+            credit = read_prompt()
         else:
-            cr = read_file(sys.argv[1])
-        
-        # simulate
+            credit = read_file(sys.argv[1])
+
+        print(credit.__dict__)
+        # cs = CreditSimulator()
+        # cs.set_credit(credit)
+        # cs.simulate()
+
+        # print(cs.get_avg_monthly())
 
     except KeyboardInterrupt:
         pass
