@@ -11,14 +11,26 @@ class Credit:
         self.duration = 0
         self.dp = 0
 
-    def set(self, vehicle, condition, year, total, duration, dp):
-        self._set_vehicle(vehicle)
-        self._set_condition(condition)
-
-    def _set_vehicle(self, vehicle):
+    def set_vehicle(self, vehicle):
         if vehicle != Vehicle.MOTORCYCLE and vehicle != Vehicle.CAR:
-            raise InvalidVehicleError('kendaraan invalid')
+            raise InvalidVehicleError('kendaraan tidak valid')
         
-    def _set_condition(self, condition):
+        self.vehicle = vehicle
+        
+    def set_condition(self, condition):
         if condition != Condition.USED and condition != Condition.NEW:
-            raise InvalidConditionError('kondisi invalid')
+            raise InvalidConditionError('kondisi tidak valid')
+        
+        self.condition = condition
+        
+    def set_year(self, year):
+        current_year = datetime.now().year
+        if year > current_year:
+            raise InvalidYearError('tahun tidak valid')
+        
+        last_year = current_year-1
+        if self.condition == Condition.NEW and year < last_year:
+            raise InvalidYearNewVehicleError('kendaraan baru minimal tahun {}'.format(last_year))
+        
+        self.year = year
+
